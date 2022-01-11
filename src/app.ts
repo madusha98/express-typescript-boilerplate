@@ -1,8 +1,8 @@
 import "reflect-metadata";
-const { defaultMetadataStorage } = require('class-transformer/cjs/storage')
+const { defaultMetadataStorage } = require("class-transformer/cjs/storage");
 import { validationMetadatasToSchemas } from "class-validator-jsonschema";
 import cookieParser from "cookie-parser";
-import config from "@configs/config";
+import config from "./configs/config";
 import express from "express";
 import helmet from "helmet";
 import hpp from "hpp";
@@ -10,8 +10,8 @@ import morgan from "morgan";
 import { useExpressServer, getMetadataArgsStorage } from "routing-controllers";
 import { routingControllersToSpec } from "routing-controllers-openapi";
 import swaggerUi from "swagger-ui-express";
-import errorMiddleware from "@middlewares/error.middleware";
-import { logger, stream } from "@configs/logger";
+import errorMiddleware from "./middlewares/error.middleware";
+import { logger, stream } from "./configs/logger";
 
 class App {
   public app: express.Application;
@@ -25,12 +25,15 @@ class App {
 
     this.initializeMiddlewares();
     this.initializeRoutes(Controllers);
-    this.initializeSwagger(Controllers);
     this.initializeErrorHandling();
+
+    if (this.env !== "production") {
+      this.initializeSwagger(Controllers);
+    }
   }
 
   public listen() {
-    this.app.listen(this.port, () => {
+    return this.app.listen(this.port, () => {
       logger.info(`=================================`);
       logger.info(`======= ENV: ${this.env} =======`);
       logger.info(`🚀 App listening on the port ${this.port}`);

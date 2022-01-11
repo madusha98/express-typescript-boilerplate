@@ -24,39 +24,6 @@
         "esModuleInterop": true,
         "resolveJsonModule": true,
         "importHelpers": true,
-        "baseUrl": "src",
-        "paths": {
-            "@/*": [
-                "*"
-            ],
-            "@controllers/*": [
-                "controllers/*"
-            ],
-            "@dtos/*": [
-                "dtos/*"
-            ],
-            "@exceptions/*": [
-                "exceptions/*"
-            ],
-            "@interfaces/*": [
-                "interfaces/*"
-            ],
-            "@middlewares/*": [
-                "middlewares/*"
-            ],
-            "@models/*": [
-                "models/*"
-            ],
-            "@services/*": [
-                "services/*"
-            ],
-            "@utils/*": [
-                "utils/*"
-            ],
-            "@configs/*": [
-                "configs/*"
-            ],
-        }
     },
     "include": [
         "src/**/*.ts",

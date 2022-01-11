@@ -1,5 +1,4 @@
-import { TodoDto } from "@/dtos/todo.dto";
-import { IsString } from "class-validator";
+import { TodoDto } from "../dtos/todo.dto";
 import { Body, Get, JsonController, Post } from "routing-controllers";
 
 @JsonController("/todo")
